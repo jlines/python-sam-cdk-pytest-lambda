@@ -1,0 +1,4 @@
+[flake8]
+exclude=.git,.venv,deploy/utils,.aws-sam
+extend-ignore=E203
+max-line-length=120

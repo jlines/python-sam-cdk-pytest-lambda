@@ -1,0 +1,33 @@
+version = 0.1
+
+[default.global.parameters]
+stack_name = "ApiLambdaStack"
+region = "us-east-1"
+
+[default.build.parameters]
+cached = true
+template_file = "./cdk.out/ApiLambdaStack.template.json"
+parallel = true
+
+[default.validate.parameters]
+lint = true
+template_file = "./cdk.out/ApiLambdaStack.template.json"
+
+[default.deploy.parameters]
+capabilities = "CAPABILITY_IAM"
+confirm_changeset = true
+resolve_s3 = true
+
+[default.package.parameters]
+resolve_s3 = true
+
+[default.sync.parameters]
+watch = true
+template_file = "./cdk.out/ApiLambdaStack.template.json"
+dependency_layer = false
+
+[default.local_start_api.parameters]
+warm_containers = "EAGER"
+
+[default.local_start_lambda.parameters]
+warm_containers = "EAGER"

@@ -1,0 +1,47 @@
+{
+    "workbench.colorCustomizations": {
+        "[Default Dark Modern]": {
+            "activityBar.background": "#000000",
+            "titleBar.activeBackground": "#303030"
+        },
+        "[Default Light Modern]": {
+            "activityBar.background": "#917fb1",
+            "titleBar.activeBackground": "#8f7fb1"
+        }
+    },
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "black-formatter.args": ["--config", ".black.toml"],
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit"
+    },
+    "editor.formatOnSave": true,
+    "editor.rulers": [120],
+    "files.exclude": {
+        "**/*.pyc": true,
+        "**/__pycache__/": true,
+        "**/build/": true,
+        "**/*.egg-info/": true
+    },
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "python.terminal.activateEnvironment": true,
+    "python.testing.pytestArgs": [".", "--color=yes"],
+
+    "search.exclude": {
+        "**/.git": true,
+        "**/.venv": true
+    },
+    "triggerTaskOnSave.tasks": {
+        "flake8-whole-project": ["**/*.*py"]
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "pylint.args": [
+        "--disable=W"
+    ]
+}
