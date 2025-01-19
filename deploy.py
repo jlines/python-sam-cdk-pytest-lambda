@@ -1,13 +1,21 @@
 #!/usr/bin/env python3
-import aws_cdk as cdk
+if __name__ == "__main__":
+    from os import getenv
 
-from cdk_stacks.deploy_api_stack import ApiLambdaStack
+    import aws_cdk as cdk
 
-app = cdk.App()
-ApiLambdaStack(
-    app,
-    "ApiLambdaStack",
-    env=cdk.Environment(account="{AWS_ACCOUNT_NUMBER}", region="us-east-1"),
-)
+    from cdk_stacks.deploy_api_stack import ApiLambdaStack
 
-app.synth()
+    account = getenv("AWS_DEFAULT_ACCOUNT")
+    region = getenv("AWS_DEFAULT_REGION")
+
+    print(f"Region: {region}")
+
+    app = cdk.App()
+    ApiLambdaStack(
+        app,
+        "MyApiLambdaStack",
+        env=cdk.Environment(account=account, region=region),
+    )
+
+    app.synth()

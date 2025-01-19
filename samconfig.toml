@@ -1,17 +1,17 @@
 version = 0.1
 
 [default.global.parameters]
-stack_name = "ApiLambdaStack"
+stack_name = "MyApiLambdaStack"
 region = "us-east-1"
 
 [default.build.parameters]
 cached = true
-template_file = "./cdk.out/ApiLambdaStack.template.json"
+template_file = "./cdk.out/MyApiLambdaStack.template.json"
 parallel = true
 
 [default.validate.parameters]
 lint = true
-template_file = "./cdk.out/ApiLambdaStack.template.json"
+template_file = "./cdk.out/MyApiLambdaStack.template.json"
 
 [default.deploy.parameters]
 capabilities = "CAPABILITY_IAM"
@@ -23,7 +23,7 @@ resolve_s3 = true
 
 [default.sync.parameters]
 watch = true
-template_file = "./cdk.out/ApiLambdaStack.template.json"
+template_file = "./cdk.out/MyApiLambdaStack.template.json"
 dependency_layer = false
 
 [default.local_start_api.parameters]

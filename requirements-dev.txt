@@ -1,1 +1,5 @@
-pytest==6.2.5
+pytest==8.3.4
+requests==2.32.3
+boto3==1.36.2
+python-dotenv==1.0.1
+flake8==7.1.1

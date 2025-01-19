@@ -1,6 +1,6 @@
 import json
 
-import src.routes.device as device
+import routes.example as example
 
 # import items as device
 
@@ -10,8 +10,8 @@ import src.routes.device as device
 
 def lambda_handler(event, context):
 
-    if event["path"] == "/device":
-        return device.lambda_handler(event, context)
+    if event["path"] == "/example":
+        return example.lambda_handler(event, context)
 
     return {
         "statusCode": 200,

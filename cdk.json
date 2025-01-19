@@ -1,6 +1,5 @@
 {
-  "app": "python3 deploy.py",
-  "profile": "personal",
+  "app": "export $(cat .env | xargs) && python3 deploy.py",
   "watch": {
     "include": ["**"],
     "exclude": [

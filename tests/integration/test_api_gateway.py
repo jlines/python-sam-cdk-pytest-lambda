@@ -2,15 +2,13 @@ import boto3
 import pytest
 import requests
 
-boto3.setup_default_session(profile_name="personal")
-
 
 class TestApiGateway:
 
     @pytest.fixture()
     def api_gateway_url(self):
         """Get the API Gateway URL from Cloudformation Stack outputs"""
-        stack_name = "ApiLambdaStack"
+        stack_name = "MyApiLambdaStack"
 
         if stack_name is None:
             raise ValueError("Configure stack_name in the test")
@@ -19,6 +17,7 @@ class TestApiGateway:
 
         try:
             response = client.describe_stacks(StackName=stack_name)
+            # response = client.describe_stacks()
         except Exception as e:
             raise Exception(f"Cannot find stack {stack_name} \n") from e
 
@@ -27,13 +26,13 @@ class TestApiGateway:
         api_outputs = [output for output in stack_outputs if output["OutputKey"].startswith("MyAPI")]
 
         if not api_outputs:
-            raise KeyError(f"ApiLambdaStack not found in stack {stack_name}")
+            raise KeyError(f"MyAPI not found in stack {stack_name}")
 
         return api_outputs[0]["OutputValue"]  # Extract url from stack outputs
 
     def test_api_gateway(self, api_gateway_url):
         """Call the API Gateway endpoint and check the response"""
-        response = requests.get(api_gateway_url + "items")
+        response = requests.get(api_gateway_url)
 
         assert response.status_code == 200
         assert response.json() == {"message": "default"}

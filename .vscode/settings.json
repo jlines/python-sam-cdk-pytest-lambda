@@ -2,11 +2,11 @@
     "workbench.colorCustomizations": {
         "[Default Dark Modern]": {
             "activityBar.background": "#000000",
-            "titleBar.activeBackground": "#303030"
+            "titleBar.activeBackground": "#000000"
         },
         "[Default Light Modern]": {
-            "activityBar.background": "#917fb1",
-            "titleBar.activeBackground": "#8f7fb1"
+            "activityBar.background": "#bcbcbc",
+            "titleBar.activeBackground": "#bcbcbc"
         }
     },
     "python.testing.unittestEnabled": false,
@@ -21,7 +21,12 @@
         "**/*.pyc": true,
         "**/__pycache__/": true,
         "**/build/": true,
-        "**/*.egg-info/": true
+        "**/*.egg-info/": true,
+        "**/.mypy_cache/": true,
+        "**/.pytest_cache/": true,
+        "**/.aws-sam/": true,
+        "**/.venv/": true,
+        "**/cdk.out/": true
     },
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
@@ -30,7 +35,7 @@
 
     "search.exclude": {
         "**/.git": true,
-        "**/.venv": true
+        "**/.venv": true,
     },
     "triggerTaskOnSave.tasks": {
         "flake8-whole-project": ["**/*.*py"]
