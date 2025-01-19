@@ -1,0 +1,41 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+name: Lint
+on: [workflow_dispatch, pull_request]
+env:
+  TERM: xterm-256color
+  AWS_DEFAULT_REGION: us-east-1
+
+jobs:
+  lint:
+    name: Lint and Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup python version
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install linter dependencies
+        run: pip install --disable-pip-version-check black flake8 pep8-naming isort[colors] pylint
+
+      - name: Install test requirements
+        run: pip install --disable-pip-version-check -r requirements_test.txt
+
+      - name: Check format (black)
+        run: black --config .black.toml --color --check --diff .
+
+      - name: Import ordering (isort)
+        run: isort --color --check-only --diff .
+
+      - name: Lint (flake8)
+        run: flake8
+
+      # Pylint is a little too demanding right now, save it for later
+      # - name: Lint (pylint)
+      #   run: find . -type f -name "*.py"  -not -path '*/\.*' | xargs pylint --output-format=colorized --rcfile=.pylintrc
+
+      - name: Run unit tests
+        run: pytest -v --color=yes
